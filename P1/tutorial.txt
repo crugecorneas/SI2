@@ -1,6 +1,11 @@
-Conexión a máquina virtual:
-iniciar la MV uno;
+Conexión a máquina virtual 1:
 poner este comando: createdb –U alumnodb voto
+
+Conexión MV2:
+ssh si2@localhost -p 22022
+mkdir -p /home/si2/repo
+cd /home/si2/repo
+git init --bare p1base.git -b main
 
 
 
