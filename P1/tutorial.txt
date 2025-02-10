@@ -1,0 +1,15 @@
+Conexión a máquina virtual:
+iniciar la MV uno;
+poner este comando: createdb –U alumnodb voto
+
+
+
+
+
+python3 -m venv p1_env
+source p1_env/bin/activate
+pip install -r SI2/P1/P1-base/requirements.txt
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver 8001
