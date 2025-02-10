@@ -13,3 +13,35 @@ pip install -r SI2/P1/P1-base/requirements.txt
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver 8001
+
+
+
+
+
+
+
+
+
+
+
+
+Accede a PostgreSQL como usuario postgres:
+
+sudo -u postgres psql
+Dentro de psql, ejecuta:
+
+
+3️⃣ Crear la base de datos y el usuario
+-- Crear el usuario 'alumnodb' con contraseña 'alumnodb'
+CREATE USER alumnodb WITH PASSWORD 'alumnodb';
+
+-- Crear la base de datos 'voto' y asignarle el propietario 'alumnodb'
+CREATE DATABASE voto OWNER alumnodb;
+
+-- Dar privilegios al usuario sobre la base de datos
+GRANT ALL PRIVILEGES ON DATABASE voto TO alumnodb;
+
+4️⃣ Probar la conexión
+Ejecuta:
+
+psql -h localhost -p 15432 -U alumnodb -d voto
