@@ -35,7 +35,7 @@ git add .
 git commit -m "$1"
 
 # Realiza el push al repositorio remoto
-git push
+git push origin main
 
 # Mensaje de éxito
 echo "Cambios enviados con éxito con el mensaje: $1"
