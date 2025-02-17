@@ -1,7 +1,7 @@
 # tests.py
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Voto, Censo
+from models import Voto, Censo
 # from .forms import VotoForm, CensoForm, DelVotoForm, GetVotosForm
 
 
