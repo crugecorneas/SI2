@@ -89,6 +89,27 @@ DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL)
 }
 
+#neon
+# Add these at the top of your settings.py
+#from urllib.parse import urlparse
+#
+#load_dotenv()
+#
+# Replace the DATABASES section of your settings.py with this
+#tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+#
+#
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': tmpPostgres.path.replace('/', ''),
+#        'USER': tmpPostgres.username,
+#        'PASSWORD': tmpPostgres.password,
+#        'HOST': tmpPostgres.hostname,
+#        'PORT': 5432,
+#    }
+#}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
