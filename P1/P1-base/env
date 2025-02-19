@@ -17,7 +17,7 @@
 
 # use postgres
 #MV1
-DATABASE_SERVER_URL='postgres://alumnodb:alumnodb@localhost:15432/voto'
+DATABASE_SERVER_URL='postgres://alumnodb:alumnodb@192.168.1.68:15432/voto'
 #neon
 #DATABASE_URL='postgresql://alumnodb:npg_QfNYwtd4ERn7@ep-steep-pine-a8gb1b6g-pooler.eastus2.azure.neon.tech/voto?sslmode=require'
 
