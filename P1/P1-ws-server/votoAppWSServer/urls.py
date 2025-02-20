@@ -18,7 +18,7 @@ from django.urls import path
 #from votoAppWSServer.views import (aportarinfo_censo, aportarinfo_voto,
 #                          testbd, getvotos, delvoto)
 
-from votoAppWSServer.views import CensoView
+from votoAppWSServer.views import CensoView, VotoView, ProcesoElectoralView
 urlpatterns = [
     #path("", aportarinfo_censo, name="index"),
     #path("censo/", aportarinfo_censo, name="censo"),
@@ -28,14 +28,14 @@ urlpatterns = [
     #path("testbd/delvoto/", delvoto, name="delvoto"),
 
     # check if person is in "censo"
-    path('restapiserver/censo/', CensoView.as_view(), name='censo'),
+    path('censo/', CensoView.as_view(), name='censo'),
     
     # create "voto"
-    #path('voto/', VotoView.as_view(), name='voto'),
+    path('voto/', VotoView.as_view(), name='voto'),
     
     # get list of "votos" associated with a given idProcesoElectoral
-    #path('procesoelectoral/<str:idProcesoElectoral>/', ProcesoElectoralView.as_view(), name='procesoelectoral'),
+    path('procesoelectoral/<str:idProcesoElectoral>/', ProcesoElectoralView.as_view(), name='procesoelectoral'),
     
     # delete "voto" with id id_voto
-    #path('voto/<str:id_voto>/', VotoView.as_view(), name='voto'),
+    path('voto/<str:id_voto>/', VotoView.as_view(), name='voto'),
 ]

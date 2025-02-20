@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("votoAppWSServer/", include("votoAppWSServer.urls")),
     path('', RedirectView.as_view(url='votoAppWSServer/', permanent=True)),
+    path('restapiserver/', include('votoAppWSServer.urls')),
 ]
