@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from votoApp.views import (aportarinfo_censo, aportarinfo_voto,
+from votoAppWSClient.views import (aportarinfo_censo, aportarinfo_voto,
                            testbd, getvotos, delvoto)
 
 urlpatterns = [

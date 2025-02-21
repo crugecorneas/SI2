@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-from votoApp.forms import VotoForm, CensoForm, DelVotoForm, GetVotosForm
-from votoApp.votoDB import (verificar_censo, registrar_voto,
+from votoAppWSClient.forms import VotoForm, CensoForm, DelVotoForm, GetVotosForm
+from votoAppWSClient.votoDB import (verificar_censo, registrar_voto,
                             eliminar_voto, get_votos_from_db)
 
 
