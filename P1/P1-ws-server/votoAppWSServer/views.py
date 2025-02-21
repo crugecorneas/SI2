@@ -61,12 +61,12 @@ class VotoView(APIView):
         voto_dict = model_to_dict(voto)
         return Response(voto_dict, status=status.HTTP_200_OK)
     
-    def delete(self, request, id):
+    def delete(self, request, id_voto):
         """
         Elimina un voto existente por su identificador.
         """
         try:
-            voto = Voto.objects.get(id=id)
+            voto = Voto.objects.get(id=id_voto)
         except Voto.DoesNotExist:
             return Response({'message': 'Voto no encontrado.'}, status=status.HTTP_404_NOT_FOUND)
 
