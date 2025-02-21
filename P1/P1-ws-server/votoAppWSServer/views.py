@@ -27,7 +27,7 @@ class CensoView(APIView):
         if censo_exists:
             return Response({'message': 'Datos encontrados en Censo.'}, status=status.HTTP_200_OK)
         else:
-            return Response({'message': 'Datos no encontrados en el Censo.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'message': 'Datos no encontrados en Censo.'}, status=status.HTTP_404_NOT_FOUND)
     
 
 
