@@ -2,8 +2,9 @@
 
 # Función para ejecutar el script Python y extraer el tiempo de ejecución
 get_execution_time() {
+    local script="$1"  # El script que se debe ejecutar
     # Ejecutar el script y capturar la salida
-    output=$(python3 read_1000_entries_from_db_modified.py)
+    output=$(python3 "$script")
     
     # Extraer el tiempo de la salida utilizando 'grep' y 'awk'
     time_taken=$(echo "$output" | grep -oP 'Tiempo invertido en buscar las 1000 entradas una a una: \K[0-9.]+')
@@ -14,9 +15,8 @@ get_execution_time() {
 
 # Repeticiones
 repetitions=7
-vm1_times=()
-neon_times=()
-django_times=()
+vm1_times_1=()
+vm1_times_2=()
 
 # Función para calcular el promedio y desviación estándar
 calculate_mean_and_stddev() {
@@ -50,31 +50,24 @@ calculate_mean_and_stddev() {
 
 echo "Ejecutando pruebas..."
 
-# 1. La base de datos está en la máquina virtual VM1
-#echo -e "\n1. Base de datos en VM1"
-#for i in $(seq 1 $repetitions); do
-#    time_taken=$(get_execution_time)
-#    vm1_times+=($time_taken)
-#    echo "Tiempo de ejecución $i: $time_taken segundos"
-#done
-#calculate_mean_and_stddev "${vm1_times[@]}"
-
-# 2. La base de datos no está en la red local (neon.tech)
-#echo -e "\n2. Base de datos en neon.tech"
-#for i in $(seq 1 $repetitions); do
-#    time_taken=$(get_execution_time)
-#    neon_times+=($time_taken)
-#    echo "Tiempo de ejecución $i: $time_taken segundos"
-#done
-#calculate_mean_and_stddev "${neon_times[@]}"
-
-# 3. Acceso a la base de datos mediante el ORM de Django
-echo -e "\n3. Acceso mediante el ORM de Django"
+# 1. La base de datos está en la máquina virtual VM1 con read_1000_entries_from_db.py
+echo -e "\n1. Base de datos en VM1 con read_1000_entries_from_db.py"
 for i in $(seq 1 $repetitions); do
-    time_taken=$(get_execution_time)
-    django_times+=($time_taken)
+    time_taken=$(get_execution_time "read_1000_entries_from_db.py")
+    vm1_times_1+=($time_taken)
     echo "Tiempo de ejecución $i: $time_taken segundos"
 done
-calculate_mean_and_stddev "${django_times[@]}"
+calculate_mean_and_stddev "${vm1_times_1[@]}"
+
+
+# 3. La base de datos está en VM1 con read_1000_entries_from_db_modified.py
+echo -e "\n3. Base de datos en VM1 con read_1000_entries_from_db_modified.py"
+for i in $(seq 1 $repetitions); do
+    time_taken=$(get_execution_time "read_1000_entries_from_db_modified.py")
+    vm1_times_2+=($time_taken)
+    echo "Tiempo de ejecución $i: $time_taken segundos"
+done
+calculate_mean_and_stddev "${vm1_times_2[@]}"
+
 
 echo -e "\nPruebas completadas."

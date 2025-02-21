@@ -9,8 +9,6 @@ git init --bare p1base.git -b main
 
 
 
- 
-
 python3 -m venv p1_env
 source p1_env/bin/activate
 pip install -r SI2/P1/P1-base/requirements.txt

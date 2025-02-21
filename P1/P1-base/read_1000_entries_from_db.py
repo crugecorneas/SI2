@@ -14,7 +14,7 @@ db_config = {
     'host': 'ep-steep-pine-a8gb1b6g-pooler.eastus2.azure.neon.tech',  # Cambia si el host es diferente
     'port': 5432,  # Cambia si tu puerto es diferente
 }
-
+ 
 try:
     # Conexion a la base de datos
     conn = psycopg2.connect(**db_config)
