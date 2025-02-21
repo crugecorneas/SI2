@@ -15,14 +15,12 @@ class CensoView(APIView):
         numeroDNI = request.data.get('numeroDNI')
         nombre = request.data.get('nombre')
         fechaNacimiento = request.data.get('fechaNacimiento')
-        anioCenso = request.data.get('anioCenso')
         codigoAutorizacion = request.data.get('codigoAutorizacion')
 
         censo_exists = Censo.objects.filter(
             numeroDNI=numeroDNI,
             nombre=nombre,
             fechaNacimiento=fechaNacimiento,
-            anioCenso=anioCenso,
             codigoAutorizacion=codigoAutorizacion
         ).exists()
 
