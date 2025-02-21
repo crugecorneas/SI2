@@ -25,7 +25,7 @@ sudo systemctl status gunicorn
 
 
 
-comandos git:
+comandos de git:
 forzar los cambios a tu vm2:
 git push -u vm2 main --force
 
