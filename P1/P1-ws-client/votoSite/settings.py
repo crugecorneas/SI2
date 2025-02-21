@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'votoApp.apps.AppConfig',
+    'votoAppWSClient.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
