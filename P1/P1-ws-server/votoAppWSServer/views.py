@@ -59,7 +59,7 @@ class VotoView(APIView):
         voto_dict = model_to_dict(voto)
         return Response(voto_dict, status=status.HTTP_200_OK)
     
-    def delete(self, id_voto):
+    def delete(self, request, id_voto):
         """
         Elimina un voto existente por su identificador.
         """
@@ -74,7 +74,7 @@ class VotoView(APIView):
     
 
 class ProcesoElectoralView(APIView):
-    def get(self, idProcesoElectoral):
+    def get(self, request, idProcesoElectoral):
         """
         Devuelve la lista de votos asociados a un proceso electoral específico.
         """
