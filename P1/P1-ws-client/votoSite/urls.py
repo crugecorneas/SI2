@@ -20,6 +20,6 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("votoApp/", include("votoApp.urls")),
-    path('', RedirectView.as_view(url='votoApp/', permanent=True)),
+    path("votoAppWSClient/", include("votoAppWSClient.urls")),
+    path('', RedirectView.as_view(url='votoAppWSClient/', permanent=True)),
 ]

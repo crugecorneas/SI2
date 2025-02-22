@@ -10,6 +10,7 @@ def verificar_censo(censo_data):
         return False
     
     url = f"{RESTAPIBASEURL}verificar_censo/"
+    print(url)
     response = requests.get(url, json=censo_data)
     
     return response.status_code == 200 and response.json().get("valid", False)
