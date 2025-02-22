@@ -23,7 +23,7 @@ python3 manage.py runserver 8001
 comandos gunicorn:
 sudo systemctl status gunicorn
 sudo systemctl restart gunicorn
-
+sudo systemctl daemon-reload
 
 
 comandos de git:
