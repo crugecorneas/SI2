@@ -182,6 +182,7 @@ class VotingViewsTest(TestCase):
         data = {'idProcesoElectoral': 'c0'}
         response = self.client.post(reverse('getvotos'), data=data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        print(response)
         self.assertContains(response, "aaaaa0")
         self.assertContains(response, "aaaaa1")
         self.assertNotContains(response, "aaaaa2")

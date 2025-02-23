@@ -9,19 +9,18 @@ def verificar_censo(censo_data):
     if not censo_data:
         return False
     
-    url = f"{RESTAPIBASEURL}verificar_censo/"
-    print(url)
-    response = requests.get(url, json=censo_data)
+    url = f"{RESTAPIBASEURL}censo/"
+    response = requests.post(url, json=censo_data)
     
-    return response.status_code == 200 and response.json().get("valid", False)
+    return response.status_code == 200
 
 
 def registrar_voto(voto_dict):
     """ Registra un voto en el sistema a través del API REST """
-    url = f"{RESTAPIBASEURL}registrar_voto/"
+    url = f"{RESTAPIBASEURL}voto/"
     response = requests.post(url, json=voto_dict)
     
-    if response.status_code == 201:
+    if response.status_code == 200:
         return response.json()
     else:
         print("Error: Registrando voto:", response.text)
@@ -30,17 +29,16 @@ def registrar_voto(voto_dict):
 
 def eliminar_voto(idVoto):
     """ Elimina un voto en el sistema a través del API REST """
-    url = f"{RESTAPIBASEURL}eliminar_voto/{idVoto}/"
+    url = f"{RESTAPIBASEURL}voto/{idVoto}/"
     response = requests.delete(url)
     
-    return response.status_code == 204
+    return response.status_code == 200
 
 
 def get_votos_from_db(idProcesoElectoral):
     """ Obtiene los votos asociados a un proceso electoral """
-    url = f"{RESTAPIBASEURL}get_votos/{idProcesoElectoral}/"
+    url = f"{RESTAPIBASEURL}procesoelectoral/{idProcesoElectoral}/"
     response = requests.get(url)
-    
     if response.status_code == 200:
         return response.json()
     else:

@@ -16,7 +16,6 @@ class CensoView(APIView):
         nombre = request.data.get('nombre')
         fechaNacimiento = request.data.get('fechaNacimiento')
         codigoAutorizacion = request.data.get('codigoAutorizacion')
-
         censo_exists = Censo.objects.filter(
             numeroDNI=numeroDNI,
             nombre=nombre,

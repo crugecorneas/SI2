@@ -81,6 +81,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'votoSite.wsgi.application'
 RESTAPIBASEURL = os.environ.get("RESTAPIBASEURL")
+DATABASE_URL = os.environ.get("DATABASE_SERVER_URL")
+DATABASES = {
+    'default': dj_database_url.config(default=DATABASE_URL)
+}
+DATABASE_SERVER_URL = os.environ.get("DATABASE_SERVER_URL")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
