@@ -13,8 +13,8 @@
 ##DATABASE_SERVER_URL=sqlite:///db.sqlite3
 # use postgres
 #DATABASE_SERVER_URL='postgresql://neondb_owner:npg_6WJxtXRPzZ8D@ep-steep-pine-a8gb1b6g-pooler.eastus2.azure.neon.tech/neondb?sslmode=require'
-DATABASE_SERVER_URL='postgres://alumnodb:alumnodb@172.27.227.138:15432/voto'
-RESTAPIBASEURL='http://localhost:8000/restapiserver/'
+DATABASE_SERVER_URL='postgres://alumnodb:alumnodb@172.27.239.131:15432/voto'
+RESTAPIBASEURL='http://172.27.239.131:28000/restapiserver/'
 # The client does not need to store data in any database
 # so let us define a sqlite in orden to avoid warning messages
 DEBUG=True
