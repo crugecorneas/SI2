@@ -18,11 +18,8 @@ from django.urls import path
 from votoAppRPCServerRPCServer.views import (aportarinfo_censo, aportarinfo_voto,
                            testbd, getvotos, delvoto)
 
+from modernrpc.views import RPCEntryPoint
+
 urlpatterns = [
-    path("", aportarinfo_censo, name="index"),
-    path("censo/", aportarinfo_censo, name="censo"),
-    path("voto/", aportarinfo_voto, name="voto"),
-    path("testbd/", testbd, name="testbd"),
-    path("testbd/getvotos/", getvotos, name="getvotos"),
-    path("testbd/delvoto/", delvoto, name="delvoto"),
+    path("rpc/", RPCEntryPoint.as_view(), name="rpc")
 ]

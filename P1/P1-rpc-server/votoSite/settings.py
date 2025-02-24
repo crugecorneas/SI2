@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     "modernrpc",
 ]
 
+MODERNRPC_METHODS_MODULES = [
+"votoAppRPCServer.votoDB"
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -90,9 +94,7 @@ DATABASE_URL = os.environ.get("DATABASE_SERVER_URL")
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL)
 }
-MODERNRPC_METHODS_MODULES = [
-"votoAppRPCServer.votoDB"
-]
+
 
 #neon
 # Add these at the top of your settings.py

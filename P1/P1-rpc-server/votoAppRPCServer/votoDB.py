@@ -7,7 +7,10 @@
 "Interface with the dataabse"
 from votoAppRPCServerRPCServer.models import Censo, Voto
 
+from modernrpc.core import rpc_method
+from django.forms.models import model_to_dict
 
+@rpc_method
 def verificar_censo(censo_data):
     """ Check if the voter is registered in the Censo
     :param censo_dict: dictionary with the voter data
@@ -19,7 +22,7 @@ def verificar_censo(censo_data):
         return False
     return True
 
-
+@rpc_method
 def registrar_voto(voto_dict):
     """ Register a vote in the database
     :param voto_dict: dictionary with the vote data (as provided by VotoForm)
@@ -33,9 +36,11 @@ def registrar_voto(voto_dict):
     except Exception as e:
         print("Error: Registrando voto: ", e)
         return None
-    return voto
-
-
+    
+    voto_a_devolver = model_to_dict(voto)
+    voto_a_devolver['marcaTiempo'] = str(voto.marcaTiempo)
+    return voto_a_devolver
+@rpc_method
 def eliminar_voto(idVoto):
     """ Delete a vote in the database
     :param idVoto: id of the vote to be deleted
@@ -49,11 +54,19 @@ def eliminar_voto(idVoto):
     voto.delete()
     return True
 
-
+@rpc_method
 def get_votos_from_db(idProcesoElectoral):
     """ Gets votes in the database correspondint to some electoral processs
     :param idProcesoElectoral: id of the vote to be deleted
     :return list of votes found
      """
     votos = Voto.objects.filter(idProcesoElectoral=idProcesoElectoral)
-    return votos
+
+    votos_list=[]
+
+    for voto in votos:
+        voto_a_devolver = model_to_dict(voto)
+        voto_a_devolver['marcaTiempo'] = str(voto.marcaTiempo)
+        votos_list.append(voto_a_devolver)
+
+    return votos_list
