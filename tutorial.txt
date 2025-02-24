@@ -1,3 +1,9 @@
+tar -czvf server server/
+scp -P 22022 ./server si2@localhost:/home/si2
+tar -xvf server
+sudo nano /etc/systemd/system/gunicorn.service
+
+
 Conexión a máquina virtual 1:
 poner este comando: createdb –U alumnodb voto
 
