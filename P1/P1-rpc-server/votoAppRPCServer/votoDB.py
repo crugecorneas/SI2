@@ -5,7 +5,7 @@
 #
 # author: rmarabini
 "Interface with the dataabse"
-from votoAppRPCServerRPCServer.models import Censo, Voto
+from votoAppRPCServer.models import Censo, Voto
 
 from modernrpc.core import rpc_method
 from django.forms.models import model_to_dict

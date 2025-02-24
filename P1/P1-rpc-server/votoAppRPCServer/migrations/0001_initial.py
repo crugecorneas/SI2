@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('nombreCandidatoVotado', models.CharField(max_length=16, validators=[django.core.validators.MinLengthValidator(1)])),
                 ('marcaTiempo', models.DateTimeField(auto_now=True)),
                 ('codigoRespuesta', models.CharField(default='000', max_length=3)),
-                ('censo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='votoAppRPCServerRPCServer.censo')),
+                ('censo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='votoAppRPCServer.censo')),
             ],
             options={
                 'db_table': 'voto',

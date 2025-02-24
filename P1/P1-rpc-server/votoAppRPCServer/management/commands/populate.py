@@ -3,7 +3,7 @@
 import csv
 import os
 from django.core.management.base import BaseCommand
-from votoAppRPCServerRPCServer.models import Censo, Voto
+from votoAppRPCServer.models import Censo, Voto
 
 
 class Command(BaseCommand):

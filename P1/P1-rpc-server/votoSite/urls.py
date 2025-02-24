@@ -20,6 +20,6 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("votoAppRPCServerRPCServer/", include("votoAppRPCServerRPCServer.urls")),
-    path('', RedirectView.as_view(url='votoAppRPCServerRPCServer/', permanent=True)),
+    path("votoAppRPCServer/", include("votoAppRPCServer.urls")),
+    path('', RedirectView.as_view(url='votoAppRPCServer/', permanent=True)),
 ]
