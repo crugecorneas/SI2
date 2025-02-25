@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'votoSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+RPCAPIBASEURL = os.environ.get("RPCAPIBASEURL")
 DATABASE_URL = os.environ.get("DATABASE_SERVER_URL")
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL)
