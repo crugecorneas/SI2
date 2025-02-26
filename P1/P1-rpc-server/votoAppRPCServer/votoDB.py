@@ -40,6 +40,7 @@ def registrar_voto(voto_dict):
     voto_a_devolver = model_to_dict(voto)
     voto_a_devolver['marcaTiempo'] = str(voto.marcaTiempo)
     return voto_a_devolver
+
 @rpc_method
 def eliminar_voto(idVoto):
     """ Delete a vote in the database

@@ -62,3 +62,10 @@ GRANT ALL PRIVILEGES ON DATABASE voto TO alumnodb;
 Ejecuta:
 
 psql -h localhost -p 15432 -U alumnodb -d voto
+
+servicio Puerto Host Puerto VM
+ssh 12022 22
+apache 18080 80
+postgresql 15432 5432
+gunicorn 18000 8000
+rabbitmq 15672 5672
