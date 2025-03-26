@@ -69,3 +69,25 @@ apache 18080 80
 postgresql 15432 5432
 gunicorn 18000 8000
 rabbitmq 15672 5672
+
+
+sudo nano /etc/systemd/system/gunicorn.service
+
+[Unit]
+Description=Gunicorn WSGI Application Server
+After=network.target
+[Service]
+User=si2
+Group=si2
+WorkingDirectory=/home/si2/repo/<nombre-del-proyecto>
+Environment="PATH=/home/si2/venv/bin"
+ExecStart=/home/si2/venv/bin/gunicorn \
+--workers 1 \
+--bind 0.0.0.0:8000 \
+votoSite.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
