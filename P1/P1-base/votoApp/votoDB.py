@@ -5,6 +5,7 @@
 #
 # author: rmarabini
 "Interface with the dataabse"
+import socket
 from votoApp.models import Censo, Voto
 
 
@@ -27,6 +28,7 @@ def registrar_voto(voto_dict):
     :return new voto info if succesful, None otherwise
     """
     try:
+        voto_dict['instancia'] = socket.gethostname()
         voto = Voto.objects.create(**voto_dict)
         # get default values from voto
         voto = Voto.objects.get(pk=voto.pk)
