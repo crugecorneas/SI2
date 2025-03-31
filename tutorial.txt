@@ -95,19 +95,31 @@ WantedBy=multi-user.target
 
 sudo nano /etc/apache2/sites-available/000-default.conf
 
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_balancer
+sudo a2enmod lbmethod_byrequests
+sudo a2enmod headers
+
+
+sudo apachectl configtest
+journalctl -xeu apache2.service
+sudo tail -n 50 /var/log/apache2/error.log
+
+
 ProxyRequests Off
+
 <Proxy balancer://SI2Cluster>
   # Miembros del cluster (instancias de la app Django)
-  BalancerMember http://ip:18000 route=Instance01
-  BalancerMember http://ip:28000 route=Instance02
-  BalancerMember http://ip:38000 route=Instance03
+  BalancerMember http://10.250.1.7:18000 route=Instance01
+  BalancerMember http://10.250.1.7:28000 route=Instance02
+  BalancerMember http://10.250.1.7:38000 route=Instance03
 
   # Habilitar sticky session con la cookie ROUTEID
   ProxySet stickysession=ROUTEID
 </Proxy>
 
-Header add Set-Cookie "ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/"
-  env=BALANCER_ROUTE_CHANGED
+Header add Set-Cookie "ROUTEID=%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
 
 # Configurar la ubicación para balanceo de carga
 <Location /P1base>
@@ -131,5 +143,5 @@ RewriteRule ^(.*)$ /P1base$1 [R,L]
 # Ajustar encabezado Location para evitar afectaciones
 Header edit Location ^/(?!balancer-manager)([^/]) /P1base/$1
 
-# Definir el nombre del servidor (ajústalo según tu configuración)
-ServerName XX.YY.ZZ.II  # La IP de tu servidor Apache
+# Definir el nombre del servidor (ajústalo según tu configuración
+ServerName localhost:80
