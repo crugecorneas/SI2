@@ -3,6 +3,8 @@ scp -P 12022 ./server si2@localhost:/home/si2
 tar -xvf server
 sudo nano /etc/systemd/system/gunicorn.service
 
+sudo -i -u postgres
+sudo -i -u postgres;
 
 Conexión a máquina virtual 1:
 poner este comando: createdb –U alumnodb voto
@@ -79,7 +81,7 @@ After=network.target
 [Service]
 User=si2
 Group=si2
-WorkingDirectory=/home/si2/repo/<nombre-del-proyecto>
+WorkingDirectory=/home/si2/P1-base
 Environment="PATH=/home/si2/venv/bin"
 ExecStart=/home/si2/venv/bin/gunicorn \
 --workers 1 \
@@ -145,7 +147,7 @@ RewriteRule ^(.*)$ /P1base$1 [R,L]
 Header edit Location ^/(?!balancer-manager)([^/]) /P1base/$1
 
 # Definir el nombre del servidor (ajústalo según tu configuración
-ServerName localhost:80
+ServerName localhost
 
 
 
